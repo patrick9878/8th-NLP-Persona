@@ -11,6 +11,8 @@ import torch
 CSV_PATH = os.path.join("datasets", "reviews", "Cyberpunk_2077_Steam_Reviews.csv")
 DB_PATH = os.path.join("datasets", "chroma_db")
 COLLECTION_NAME = "cyberpunk2077_reviews"
+# Local Model Path (Relative to project root or absolute)
+# User specified: models/Qwen3-Embedding-8B
 MODEL_PATH = os.path.join("models", "Qwen3-Embedding-8B")
 MODEL_NAME = "Qwen3-Embedding-8B" # For metadata or fallback
 
