@@ -22,3 +22,5 @@ datasets/chroma_db/
 datasets/reviews/
 
 models/
+
+.vscode/
