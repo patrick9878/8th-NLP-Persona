@@ -46,7 +46,7 @@ def get_async_llm_client():
 client, MODEL_NAME = get_async_llm_client()
 print(f"✅ Using model: {MODEL_NAME} (Team 2 - Async)")
 
-OUTPUT_FILE = "static_rag/Team2_StaticRAG_Results.csv"
+OUTPUT_FILE = "static_rag/Team2_StaticRAG_Results_0105YG.csv"
 SIMULATION_DATES_FILE = "datasets/simulation_dates.csv"
 
 # =============================================================================
@@ -164,7 +164,8 @@ async def run_experiment_b_rag_async(n_per_type: int = 13, max_concurrent: int =
             async with retrieval_lock:
                 candidates = []
                 for query in selected_queries:
-                    reviews = retriever.retrieve_reviews(query, date_str, top_k=2)
+                    # Run blocking sync DB call in a separate thread to avoid blocking event loop
+                    reviews = await asyncio.to_thread(retriever.retrieve_reviews, query, date_str, top_k=2)
                     candidates.extend(reviews)
                 unique_candidates = list(set(candidates))
                 final_docs = unique_candidates[:5]
