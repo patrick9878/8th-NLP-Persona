@@ -45,3 +45,8 @@ archive/
 *.sh
 # 임시 확인용 파이썬 파일 무시
 check_freeze.py
+.vscode/
+
+# Ignore CSV results in team folders
+static_zero_shot/*.csv
+time_aware_rag/*.csv
